@@ -2,15 +2,38 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Project goal: the three things the copilot does for a new issue:
+
+- Find duplicates and similar resolved issues.
+- Predict the label or component.
+- Write a short triage summary with citations.
+
+## Stack: the tools we already picked, with fixed choices where you’d otherwise have to decide mid-build:
+
+uv for packages;
+plain SQL through psycopg instead of an ORM, so retrieval queries stay visible and easy to explain;
+pytest and ruff for tests and lint.
+
+## Conventions: how code should look, so it stays consistent across days
+
+- Type hints everywhere, with Pydantic models for anything crossing a boundary;
+- Prompts kept in their own files;
+- Config read in one place;
+- Each LLM call logged with its tokens and latency.
+
+## Frozen eval paths: the files that define how you measure the system:
+
+- The golden set (evals/golden/);
+- The metric code (evals/metrics.py);
+- The dev/test split (data/splits/).
+
 ## Project status
 
-`issue-triage-copilot`: an issue-triage agent. The repo is at its first commit and holds only a README, with no source, build, lint, or test setup yet. Update this file with commands and architecture once they exist.
+Only basic skeleton is currently present. Update this file with commands and architecture once they exist.
 
 `.env` exports `LANGSMITH_ENDPOINT` and `LANGSMITH_API_KEY`, so the agent will be traced with LangSmith. Load it with `source .env`.
 
 ## Working principles
-
-These come from [andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills). They favor caution over speed; trivial changes like typo fixes can skip the full process.
 
 ### 1. Think before coding
 - State your assumptions explicitly. If you're unsure, ask instead of guessing.
