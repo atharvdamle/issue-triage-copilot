@@ -1,1 +1,22 @@
+# Secrets — never commit
 .env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Data: raw issue text stays local (tracker terms + size)
+data/raw/
+data/processed/
+data/review/
+
+# Eval run artifacts (results.md is committed)
+evals/reports/
+
+.DS_Store
+*.log

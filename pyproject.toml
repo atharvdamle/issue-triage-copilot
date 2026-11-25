@@ -1,0 +1,23 @@
+[project]
+name = "issue-triage-copilot"
+version = "0.1.0"
+description = "Issue tracker intelligence tool for VS Code to predict the right label to assign to new issues from GitHub."
+authors = [
+    { name = "Atharv Damle", email = "damleatharv92@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "httpx>=0.28.1",
+    "pydantic>=2.14.1",
+    "pydantic-settings>=2.16.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.11.24,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.17.2",
+]
